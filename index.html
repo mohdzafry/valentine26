@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Initial Question Screen -->
+    <div id="question-screen" class="screen active">
+        <div class="hearts-background"></div>
+        <div class="content">
+            <h1 class="main-question">Will You Be My Valentine?</h1>
+            <div class="buttons-container">
+                <button id="yes-btn" class="btn yes-btn">Yes! 💗</button>
+                <button id="no-btn" class="btn no-btn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Love Tree Screen -->
+    <div id="tree-screen" class="screen">
+        <div class="sky"></div>
+        <div class="ground"></div>
+        <div id="falling-heart" class="heart-falling">💗</div>
+
+        <!-- Poem Container -->
+        <div class="poem-container">
+            <div class="poem-content">
+                <p>From the day I saw you,</p>
+                <p>I called you "Beauty."</p>
+                <p>You dance in my heart so happily,</p>
+                <p>You mean the world to me.</p>
+                <p>So forever I'll call you,</p>
+                <p class="special-line">Neeye en kadali 💕</p>
+            </div>
+        </div>
+
+        <svg id="love-tree" class="love-tree" viewBox="0 0 400 500">
+            <!-- Tree trunk -->
+            <path id="trunk" class="trunk" d="M 180 500 L 180 300 Q 180 280 200 280 Q 220 280 220 300 L 220 500"
+                fill="#8B4513" />
+
+            <!-- Tree branches -->
+            <g id="branches" class="branches">
+                <!-- Left branches -->
+                <path class="branch" d="M 190 350 Q 150 340 120 320" stroke="#A0522D" stroke-width="8" fill="none" />
+                <path class="branch" d="M 190 320 Q 140 310 100 280" stroke="#A0522D" stroke-width="6" fill="none" />
+                <path class="branch" d="M 190 380 Q 160 370 140 360" stroke="#A0522D" stroke-width="7" fill="none" />
+
+                <!-- Right branches -->
+                <path class="branch" d="M 210 350 Q 250 340 280 320" stroke="#A0522D" stroke-width="8" fill="none" />
+                <path class="branch" d="M 210 320 Q 260 310 300 280" stroke="#A0522D" stroke-width="6" fill="none" />
+                <path class="branch" d="M 210 380 Q 240 370 260 360" stroke="#A0522D" stroke-width="7" fill="none" />
+            </g>
+
+            <!-- Leaves/Hearts -->
+            <g id="leaves" class="leaves">
+                <text class="leaf" x="120" y="320" font-size="30">💚</text>
+                <text class="leaf" x="100" y="280" font-size="25">💚</text>
+                <text class="leaf" x="140" y="360" font-size="28">💚</text>
+                <text class="leaf" x="280" y="320" font-size="30">💚</text>
+                <text class="leaf" x="300" y="280" font-size="25">💚</text>
+                <text class="leaf" x="260" y="360" font-size="28">💚</text>
+                <text class="leaf" x="200" y="270" font-size="32">💚</text>
+            </g>
+
+            <!-- Memory photos on branches -->
+            <g id="memory-photos" class="memory-photos">
+                <foreignObject x="70" y="250" width="80" height="80" class="photo-frame">
+                    <div class="photo" style="background-image: url('memory1.jpg')"></div>
+                </foreignObject>
+                <foreignObject x="250" y="250" width="80" height="80" class="photo-frame">
+                    <div class="photo" style="background-image: url('memory2.jpg')"></div>
+                </foreignObject>
+                <foreignObject x="90" y="295" width="80" height="80" class="photo-frame">
+                    <div class="photo" style="background-image: url('memory3.jpg')"></div>
+                </foreignObject>
+                <foreignObject x="230" y="295" width="80" height="80" class="photo-frame">
+                    <div class="photo" style="background-image: url('memory4.jpg')"></div>
+                </foreignObject>
+                <foreignObject x="160" y="340" width="80" height="80" class="photo-frame">
+                    <div class="photo" style="background-image: url('memory5.jpg')"></div>
+                </foreignObject>
+            </g>
+        </svg>
+
+        <div class="tree-message">
+            <h2>Our Love Grows Forever 🌳💕</h2>
+            <div class="timer-container-tree">
+                <p class="timer-label">Together Since May 30, 2024</p>
+                <div id="timer-tree" class="timer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

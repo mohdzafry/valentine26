@@ -1,0 +1,633 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Question Screen */
+.screen {
+    min-height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.screen.active {
+    display: flex;
+}
+
+#question-screen {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated hearts background */
+.hearts-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hearts-background::before,
+.hearts-background::after {
+    content: '💕';
+    position: absolute;
+    font-size: 50px;
+    animation: float 15s infinite;
+    opacity: 0.3;
+}
+
+.hearts-background::before {
+    left: 10%;
+    top: -10%;
+    animation-delay: 0s;
+}
+
+.hearts-background::after {
+    content: '💗';
+    right: 15%;
+    top: -10%;
+    animation-delay: 7s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Content */
+.content {
+    z-index: 10;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    padding: 80px 60px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    max-width: 700px;
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-question {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Poem */
+.poem {
+    font-size: 1.2rem;
+    color: #fff;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.poem p {
+    margin: 5px 0;
+}
+
+/* Timer */
+.timer-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.timer-label {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.timer {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+    position: relative;
+    height: 70px;
+}
+
+.btn {
+    padding: 18px 50px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    color: white;
+}
+
+.yes-btn:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 12px 30px rgba(255, 107, 157, 0.4);
+}
+
+.yes-btn:active {
+    transform: translateY(0) scale(1.05);
+}
+
+.no-btn {
+    background: linear-gradient(135deg, #a8a8a8 0%, #7f7f7f 100%);
+    color: white;
+    position: absolute;
+    transition: all 0.2s ease;
+}
+
+.no-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Tree Screen */
+#tree-screen {
+    background: linear-gradient(to bottom, #87CEEB 0%, #98D8E8 50%, #90EE90 100%);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    gap: 60px;
+}
+
+.sky {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, #87CEEB 0%, #98D8E8 100%);
+}
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, #90EE90 0%, #3CB371 100%);
+}
+
+/* Poem Container */
+.poem-container {
+    position: relative;
+    z-index: 20;
+    max-width: 450px;
+    opacity: 0;
+}
+
+.poem-container.show {
+    animation: fadeInLeft 1.2s ease-out 5s forwards;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.poem-content {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    padding: 50px 40px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.poem-content p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.6;
+    margin: 12px 0;
+}
+
+.poem-content .special-line {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ff6b9d;
+    margin-top: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Falling Heart Animation */
+.heart-falling {
+    position: absolute;
+    font-size: 80px;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 100;
+}
+
+.heart-falling.animate {
+    animation: fallAndGrow 3s ease-in-out forwards;
+}
+
+@keyframes fallAndGrow {
+    0% {
+        top: 20%;
+        opacity: 1;
+        transform: translateX(-50%) scale(1) rotate(0deg);
+    }
+
+    50% {
+        top: 60%;
+        transform: translateX(-50%) scale(1.2) rotate(180deg);
+    }
+
+    100% {
+        top: 70%;
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5) rotate(360deg);
+    }
+}
+
+/* Love Tree */
+.love-tree {
+    width: 600px;
+    height: 700px;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.love-tree.grow {
+    animation: treeGrow 2s ease-out 2.5s forwards;
+}
+
+@keyframes treeGrow {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.trunk {
+    opacity: 0;
+}
+
+.love-tree.grow .trunk {
+    animation: fadeIn 1s ease-out 2.8s forwards;
+}
+
+.branch {
+    stroke-linecap: round;
+    opacity: 0;
+}
+
+.love-tree.grow .branch {
+    animation: branchGrow 1s ease-out forwards;
+}
+
+.love-tree.grow .branch:nth-child(1) {
+    animation-delay: 3.2s;
+}
+
+.love-tree.grow .branch:nth-child(2) {
+    animation-delay: 3.4s;
+}
+
+.love-tree.grow .branch:nth-child(3) {
+    animation-delay: 3.6s;
+}
+
+.love-tree.grow .branch:nth-child(4) {
+    animation-delay: 3.3s;
+}
+
+.love-tree.grow .branch:nth-child(5) {
+    animation-delay: 3.5s;
+}
+
+.love-tree.grow .branch:nth-child(6) {
+    animation-delay: 3.7s;
+}
+
+@keyframes branchGrow {
+    from {
+        opacity: 0;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+    }
+
+    to {
+        opacity: 1;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 0;
+    }
+}
+
+.leaf {
+    opacity: 0;
+}
+
+.love-tree.grow .leaf {
+    animation: leafAppear 0.5s ease-out forwards;
+}
+
+.love-tree.grow .leaf:nth-child(1) {
+    animation-delay: 4s;
+}
+
+.love-tree.grow .leaf:nth-child(2) {
+    animation-delay: 4.1s;
+}
+
+.love-tree.grow .leaf:nth-child(3) {
+    animation-delay: 4.2s;
+}
+
+.love-tree.grow .leaf:nth-child(4) {
+    animation-delay: 4.15s;
+}
+
+.love-tree.grow .leaf:nth-child(5) {
+    animation-delay: 4.25s;
+}
+
+.love-tree.grow .leaf:nth-child(6) {
+    animation-delay: 4.3s;
+}
+
+.love-tree.grow .leaf:nth-child(7) {
+    animation-delay: 4.05s;
+}
+
+@keyframes leafAppear {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Memory Photos */
+.photo-frame {
+    opacity: 0;
+}
+
+.love-tree.grow .photo-frame {
+    animation: photoAppear 0.6s ease-out forwards;
+}
+
+.love-tree.grow .photo-frame:nth-child(1) {
+    animation-delay: 4.5s;
+}
+
+.love-tree.grow .photo-frame:nth-child(2) {
+    animation-delay: 4.6s;
+}
+
+.love-tree.grow .photo-frame:nth-child(3) {
+    animation-delay: 4.7s;
+}
+
+.love-tree.grow .photo-frame:nth-child(4) {
+    animation-delay: 4.8s;
+}
+
+.love-tree.grow .photo-frame:nth-child(5) {
+    animation-delay: 4.9s;
+}
+
+@keyframes photoAppear {
+    from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.photo:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Tree Message */
+.tree-message {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    text-align: center;
+    opacity: 0;
+}
+
+.tree-message.show {
+    animation: fadeInUp 1s ease-out 5s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tree-message h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #c06c84;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.timer-container-tree {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.timer-container-tree .timer-label {
+    color: #c06c84;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.timer-container-tree .timer {
+    color: #764ba2;
+    font-size: 1.8rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-question {
+        font-size: 2.5rem;
+    }
+
+    .content {
+        padding: 40px 30px;
+        max-width: 90%;
+    }
+
+    .poem {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 15px 35px;
+        font-size: 1.2rem;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+
+    .no-btn {
+        position: relative;
+    }
+
+    .tree-message h2 {
+        font-size: 1.5rem;
+    }
+
+    .love-tree {
+        width: 320px;
+        height: 450px;
+    }
+
+    #tree-screen {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+
+    .poem-container {
+        max-width: 90%;
+    }
+
+    .poem-content {
+        padding: 30px 25px;
+    }
+
+    .poem-content p {
+        font-size: 1.4rem;
+    }
+
+    .poem-content .special-line {
+        font-size: 1.6rem;
+    }
+}

@@ -622,7 +622,15 @@ body {
     #tree-screen {
         flex-direction: column;
         gap: 30px;
-        padding: 30px 20px;
+        padding: 30px 20px 100px 20px;
+    }
+
+    .tree-message {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 20px;
     }
 
     .poem-container {

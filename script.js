@@ -131,3 +131,43 @@ yesBtn.addEventListener('mouseenter', () => {
 yesBtn.addEventListener('mouseleave', () => {
     yesBtn.style.filter = 'brightness(1)';
 });
+
+// Create floating hearts for tree screen
+function createTreeFloatingHeart() {
+    const heartsContainer = document.querySelector('.hearts-background-tree');
+    if (!heartsContainer) return;
+
+    const heart = document.createElement('div');
+    heart.textContent = Math.random() > 0.5 ? '💕' : '💗';
+    heart.style.position = 'absolute';
+    heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.top = '-10%';
+    heart.style.opacity = '0.4';
+    heart.style.animation = `float ${Math.random() * 10 + 10}s linear`;
+    heart.style.animationFillMode = 'forwards';
+    heart.style.pointerEvents = 'none';
+    heart.style.zIndex = '5';
+
+    heartsContainer.appendChild(heart);
+
+    // Remove heart after animation
+    setTimeout(() => {
+        heart.remove();
+    }, 20000);
+}
+
+// Start creating hearts when tree screen becomes active
+const observer = new MutationObserver(() => {
+    if (treeScreen.classList.contains('active')) {
+        // Create initial batch
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => createTreeFloatingHeart(), i * 1000);
+        }
+        // Then create periodically
+        setInterval(() => createTreeFloatingHeart(), 3000);
+        observer.disconnect(); // Stop observing once started
+    }
+});
+
+observer.observe(treeScreen, { attributes: true, attributeFilter: ['class'] });
